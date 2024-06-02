@@ -31,4 +31,12 @@ public class UserDao {
     public List<Users> getUsersBySpecialist(String specialist) {
         return repository.findBySpecialist(specialist);
     }
+
+    public List<Users> searchUsers(String name, String surname, String password, String telegram, String age,
+                                   String experience, String city, String education, String email,
+                                   Boolean hasHigherEducation, String workSchedule, String experienceDescription,
+                                   String employmentType, String specialist, List<String> selectedTechnologies) {
+        return repository.findByFilters(name, surname, password, telegram, age, experience, city, education, email,
+                hasHigherEducation, workSchedule, experienceDescription, employmentType, specialist, selectedTechnologies);
+    }
 }

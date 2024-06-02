@@ -46,7 +46,8 @@ public class UserController {
             @RequestParam(required = false) String specialist,
             @RequestParam(required = false) List<String> selectedTechnologies
     ) {
-
+        return userDao.searchUsers(name, surname, password, telegram, age, experience, city, education, email,
+                hasHigherEducation, workSchedule, experienceDescription, employmentType, specialist, selectedTechnologies);
     }
 
 
