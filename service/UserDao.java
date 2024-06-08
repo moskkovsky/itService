@@ -18,8 +18,8 @@ public class UserDao {
         repository.save(user);
     }
 
-    public boolean userExistsByEmail(String email) {
-        return repository.findByEmail(email) != null;
+    public Users getUserEmail(String email) {
+        return repository.findByEmail(email);
     }
 
     public List<Users> getAllUsers() {
@@ -32,11 +32,8 @@ public class UserDao {
         return repository.findBySpecialist(specialist);
     }
 
-    public List<Users> searchUsers(String name, String surname, String password, String telegram, String age,
-                                   String experience, String city, String education, String email,
-                                   Boolean hasHigherEducation, String workSchedule, String experienceDescription,
-                                   String employmentType, String specialist, List<String> selectedTechnologies) {
-        return repository.findByFilters(name, surname, password, telegram, age, experience, city, education, email,
-                hasHigherEducation, workSchedule, experienceDescription, employmentType, specialist, selectedTechnologies);
+    public List<Users> searchUsers(String name, String surname, String password, String telegram, String age, String experience, String city, String education, String email, Boolean hasHigherEducation, String workSchedule, String experienceDescription, String employmentType, String specialist, List<String> selectedTechnologies) {
+        return repository.findByFilters(name, surname, password, telegram, age, experience, city, education, email, hasHigherEducation, workSchedule, experienceDescription, employmentType, specialist, selectedTechnologies);
     }
+
 }

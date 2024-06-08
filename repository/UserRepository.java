@@ -30,20 +30,23 @@ public interface UserRepository extends CrudRepository<Users, Integer> {
             "(:experienceDescription IS NULL OR u.experienceDescription = :experienceDescription) AND " +
             "(:employmentType IS NULL OR u.employmentType = :employmentType) AND " +
             "(:specialist IS NULL OR u.specialist = :specialist) AND " +
-            "(:selectedTechnologies IS NULL OR u.selectedTechnologies IN :selectedTechnologies)")
-    List<Users> findByFilters(@Param("name") String name,
-                              @Param("surname") String surname,
-                              @Param("password") String password,
-                              @Param("telegram") String telegram,
-                              @Param("age") String age,
-                              @Param("experience") String experience,
-                              @Param("city") String city,
-                              @Param("education") String education,
-                              @Param("email") String email,
-                              @Param("hasHigherEducation") Boolean hasHigherEducation,
-                              @Param("workSchedule") String workSchedule,
-                              @Param("experienceDescription") String experienceDescription,
-                              @Param("employmentType") String employmentType,
-                              @Param("specialist") String specialist,
-                              @Param("selectedTechnologies") List<String> selectedTechnologies);
+            "(:selectedTechnologies IS NULL OR :selectedTechnologies IN elements(u.selectedTechnologies))")
+    List<Users> findByFilters(
+            @Param("name") String name,
+            @Param("surname") String surname,
+            @Param("password") String password,
+            @Param("telegram") String telegram,
+            @Param("age") String age,
+            @Param("experience") String experience,
+            @Param("city") String city,
+            @Param("education") String education,
+            @Param("email") String email,
+            @Param("hasHigherEducation") Boolean hasHigherEducation,
+            @Param("workSchedule") String workSchedule,
+            @Param("experienceDescription") String experienceDescription,
+            @Param("employmentType") String employmentType,
+            @Param("specialist") String specialist,
+            @Param("selectedTechnologies") List<String> selectedTechnologies
+    );
+
 }

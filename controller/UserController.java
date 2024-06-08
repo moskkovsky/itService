@@ -28,6 +28,7 @@ public class UserController {
     public List<Users> getUsersBySpecialist(@RequestParam String specialist) {
         return userDao.getUsersBySpecialist(specialist);
     }
+
     @GetMapping("/user/search")
     public List<Users> searchVacancies(
             @RequestParam(required = false) String name,
@@ -50,15 +51,12 @@ public class UserController {
                 hasHigherEducation, workSchedule, experienceDescription, employmentType, specialist, selectedTechnologies);
     }
 
-
-
-
-
-
-
-
-
-
-
-
+    @GetMapping("/user/get-by-email")
+    public Users getUserByEmail(@RequestParam String email) {
+        return userDao.getUserEmail(email);
+    }
 }
+
+
+
+
